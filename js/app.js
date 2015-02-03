@@ -1,6 +1,61 @@
 /* setup your angular app here */
+var fruitsAndVeggies = angular.module('fruitsAndVeggies',[]);
 
-//debug stuff to show the app is loading and fruit / veggies are available
-console.log('App Started');
-console.log('Fruit count', fruit.length);
-console.log('Veggie count', vegetables.length);
+fruitsAndVeggies.run(function(){
+  console.log('App started');
+})
+
+fruitsAndVeggies.controller('list',['$scope',function($scope){
+
+  $scope.fruit = fruit;
+  $scope.vegetables = vegetables;
+  $scope.all = $scope.fruit.concat($scope.vegetables);
+
+
+  $scope.newFruit = [];
+  $scope.newVeggie = [];
+
+  $scope.addFruit = function(index) {
+    alert('going to Fruit!')
+    $scope.newFruit.push($scope.all[index]);
+    $scope.all.splice(index,1);
+    //set this on the arrow left inside fruits and vegs
+  }
+
+  $scope.addVeggie = function(index) {
+    alert('going to veggie!')
+    $scope.newVeggie.push($scope.all[index]);
+    $scope.all.splice(index,1);
+    //set this on the right arrow inside fruits and vegs
+  }
+
+  $scope.addFromFruit = function(index) {
+    alert('going to all')
+    $scope.all.push($scope.newFruit[index]);
+    $scope.newFruit.splice(index,1);
+    //set this on the arrow in fruits and the arrow in vegs
+  }
+
+  $scope.addFromVeg = function(index) {
+    alert('going to all')
+    $scope.all.push($scope.newVeggie[index]);
+    $scope.newVeggie.splice(index,1);
+    //set this on the arrow in fruits and the arrow in vegs
+  }
+
+// if newFruit = fruit && newVeggie = vegetables
+// you won!
+// else
+// highlight the ones that are mismatched
+//
+
+
+  // $scope.all.push(($scope.fruit));
+  // $scope.all.push(($scope.vegetables));
+
+  // console.log(fruit.length);
+  // console.log(vegetables.length);
+}]);
+
+
+
