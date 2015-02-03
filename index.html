@@ -17,7 +17,7 @@
                     <table class="table">
                         <th>Fruit</th>
 
-                            <tr ng-repeat="item in newFruit | orderBy">
+                            <tr ng-class="{'danger':item.vegetables}" ng-repeat="item in newFruit">
                               <td>{{item}}</td>
                               <td>
                                 <button class="btn btn-warning" ng-click="addFromFruit($index)"><span class="glyphicon glyphicon-arrow-right"></span></button>
@@ -32,7 +32,7 @@
                     <table class="table">
                         <th>Fruit & Veggies</th>
 
-                            <tr ng-repeat="item in all | orderBy">
+                            <tr ng-repeat="item in all">
                               <td>{{item}}</td>
                               <td>
                                 <button class="btn btn-warning" ng-click="addFruit($index)"><span class="glyphicon glyphicon-arrow-left"></span></button>
@@ -48,7 +48,7 @@
                     <table class="table">
                         <th>Veggies</th>
 
-                        <tr ng-repeat="item in newVeggie | orderBy">
+                        <tr ng-class="{'danger':item.fruit}" ng-repeat="item in newVeggie">
                               <td>{{item}}</td>
                               <td>
                                 <button class="btn btn-warning" ng-click="addFromVeg($index)"><span class="glyphicon glyphicon-arrow-left"></span></button>
